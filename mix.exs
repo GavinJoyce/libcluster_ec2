@@ -33,6 +33,7 @@ defmodule ClusterEC2.Mixfile do
       {:sweet_xml, "~> 0.6"},
       {:hackney, "~> 1.8"},
       {:tesla, "~> 1.0"},
+      {:memoize, "~> 1.4"},
       {:ex_doc, ">= 0.0.0", only: :dev}
     ]
   end

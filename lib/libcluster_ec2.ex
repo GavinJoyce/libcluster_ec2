@@ -1,13 +1,13 @@
 defmodule ClusterEC2 do
   require Logger
-
+  use Memoize
   @moduledoc File.read!("#{__DIR__}/../README.md")
 
   @doc """
     Queries the local EC2 instance metadata API to determine the instance ID of the current instance.
   """
   @spec local_instance_id() :: binary()
-  def local_instance_id do
+  defmemo local_instance_id do
     try do
       Logger.info("ClusterEC2.local_instance_id..")
       config = ExAws.Config.new(:s3)
@@ -23,7 +23,7 @@ defmodule ClusterEC2 do
     Queries the local EC2 instance metadata API to determine the aws resource region of the current instance.
   """
   @spec instance_region() :: binary()
-  def instance_region do
+  defmemo instance_region do
     try do
       Logger.info("ClusterEC2.instance_region..")
       config = ExAws.Config.new(:s3)
