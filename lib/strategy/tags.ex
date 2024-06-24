@@ -135,7 +135,7 @@ defmodule ClusterEC2.Strategy.Tags do
         params = [filters: ["tag:#{tag_name}": fetch_tag_value(tag_name, tag_value), "instance-state-name": "running"]]
         request = ExAws.EC2.describe_instances(params)
         require Logger
-        if show_debug?, do: Logger.debug("#{inspect(request)}")
+        if show_debug?, do: Logger.debug("request: #{inspect(request)}")
 
         case ExAws.request(request, region: region) do
           {:ok, %{body: body}} ->
